@@ -9,15 +9,64 @@ body {
 }
 
 
-header{
+.encabezado{
     position: fixed;
-    background-color: purple;
-    color: white;
+    background-color:#cc00cc ;
     top: 0;
     left: 0;
-    height: 98px;
+    height: 100px;
     width: 100%;
 }
+
+
+
+.navegacion{
+    display: flex;
+    justify-content: space-between;
+    max-width: 992px;
+    margin: 0 auto;
+}
+
+
+
+.nav-link{
+color: white;
+text-decoration: none;
+}
+
+
+.logo{
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 100px;
+}
+
+
+.nav-menu{
+    display: flex;
+    margin-right: 40px;
+    list-style: none;
+}
+
+
+.nav-menu-item{
+    font-size: 18px;
+    margin:0 10px;
+    line-height: 100px;
+}
+
+
+.nav-menu-link{
+    padding: 8px 12px;
+    border-radius: 10px
+}
+
+
+.nav-menu-link:hover{
+    background-color: #024070;
+    animation-delay:3s
+}
+
 
 
 aside{
@@ -53,26 +102,6 @@ footer{
     height: 20px;
 }
 
-h2 {
-    font-family: sans-serif;
-    font-size: 14px;
-    background-color: green;
-    color: yellow;
-
-}
-
-nav a {
-    background-color: red;
-    color: white;
-    text-decoration: none;
-    
-    
-}
-
-nav a:hover{
-     background-color: blue;
-    color: white;
-}
 
 
 tr:nth-child(odd){
