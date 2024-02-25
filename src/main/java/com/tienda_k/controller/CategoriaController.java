@@ -31,7 +31,7 @@ public class CategoriaController {
         //pasar info de un java class a interface
         model.addAttribute("categorias",listado);
         model.addAttribute("totalCategorias", listado.size());
-    
+   
         return "/categoria/listado";
     }
         @Autowired
@@ -62,7 +62,7 @@ public class CategoriaController {
         @GetMapping("/modificar/{idCategoria}")
         public String modifica( Categoria categoria, Model model){
             categoria=categoriaService.getCategoria(categoria);
-            model.addAttribute("categoria", categoria);
+            model.addAttribute("categoria", categoriaService);
             return"/categoria/modifica";
         }
         

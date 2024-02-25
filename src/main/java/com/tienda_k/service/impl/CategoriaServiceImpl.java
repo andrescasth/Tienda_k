@@ -22,6 +22,7 @@ public class CategoriaServiceImpl implements CategoriaService {
     public List<Categoria> getCategorias(boolean activos) {
         var listado = categoriaDao.findAll();
         
+        
         if (activos) {
             listado.removeIf(c -> !c.isActivo());
         }
@@ -45,7 +46,9 @@ public class CategoriaServiceImpl implements CategoriaService {
     @Override
      @Transactional
     public void save(Categoria categoria) {
-        categoriaDao.save(categoria);    }
+        categoriaDao.save(categoria);    
+    
+    }
     
     
 }
