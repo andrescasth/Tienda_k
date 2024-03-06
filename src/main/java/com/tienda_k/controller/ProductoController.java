@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import com.tienda_k.domain.Producto;
+import com.tienda_k.service.CategoriaService;
 
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,10 +24,17 @@ public class ProductoController {
     
     @Autowired
     private ProductoService productoService;
+    @Autowired
+     private CategoriaService categoriaService;
     
-    @GetMapping("/listado")
+     
+     
+   @GetMapping("/listado")
     public String listado(Model model){
+        var categorias = categoriaService.getCategorias(true);
+        model.addAttribute("categorias",categorias);
         var listado = productoService.getProductos(false);
+       
         
         //pasar info de un java class a interface
         model.addAttribute("productos",listado);
@@ -38,7 +46,7 @@ public class ProductoController {
         
         private FirebaseStorageService firebaseStorageService;
         
-        @PostMapping("/guardar")
+         @PostMapping("/guardar")
         public String guardar(Producto producto, @RequestParam("imagenFile") MultipartFile imagenFile){
             
             if(!imagenFile.isEmpty()){
@@ -61,6 +69,8 @@ public class ProductoController {
         
         @GetMapping("/modificar/{idProducto}")
         public String modifica( Producto producto, Model model){
+            var categorias = categoriaService.getCategorias(true);
+            model.addAttribute("categorias",categorias);
             producto=productoService.getProducto(producto);
             model.addAttribute("producto", producto);
             return"/producto/modifica";

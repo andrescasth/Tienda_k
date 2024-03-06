@@ -17,8 +17,8 @@ public class CategoriaServiceImpl implements CategoriaService {
     @Autowired
     private CategoriaDao categoriaDao;
 
-    @Override
     @Transactional(readOnly=true)
+    @Override
     public List<Categoria> getCategorias(boolean activos) {
         var listado = categoriaDao.findAll();
         
@@ -49,6 +49,8 @@ public class CategoriaServiceImpl implements CategoriaService {
         categoriaDao.save(categoria);    
     
     }
+
+    
     
     
 }
