@@ -48,6 +48,31 @@ public class ProductoServiceImpl implements ProductoService {
     public void save(Producto producto) {
         productoDao.save(producto);    
     
+        
+        
+        
+        
+    }
+     @Override
+     @Transactional(readOnly=true)
+    public List<Producto> consultaJPA( double precioInf, double precioSup){
+        return productoDao.findByPrecioBetweenOrderByDescripcion(precioInf, precioSup);
+    }
+    
+    
+     @Override
+     @Transactional(readOnly=true)
+    //Consulta JPQL
+    public List<Producto> consultaJPQL( double precioInf, double precioSup){
+        return productoDao.consultaJPQL(precioInf, precioSup);
+    }
+    
+    
+     @Override
+     @Transactional(readOnly=true)
+    //Consulta SQL NATIVA
+    public List<Producto> consultaNativa( double precioInf, double precioSup){
+        return productoDao.consultaNativa(precioInf, precioSup);
     }
     
     

@@ -30,11 +30,7 @@ public class PruebasController {
     
     @GetMapping("/listado")
     public String listado(Model model){
-        
-        
-        
-        
-        
+
         var listado = categoriaService.getCategorias(false);
         
         //pasar info de un java class a interface
@@ -43,8 +39,41 @@ public class PruebasController {
         
         var productos = productoService.getProductos(false);
         model.addAttribute("productos",productos);
-        model.addAttribute("totalProductos", productos.size());
+       
    
         return "/pruebas/listado";
     }
+    
+    @GetMapping("/listado/{idCategoria}")
+    public String listadoFiltro(Categoria categoria, Model model) {
+        categoria = categoriaService.getCategoria(categoria);
+        var productos=categoria.getProductos();
+        model.addAttribute("productos", productos);
+        
+         var listado = categoriaService.getCategorias(false);
+        
+        model.addAttribute("categorias",listado);
+       
+        return "/pruebas/listado";
+    }
+    
+     @GetMapping("/listado2")
+    public String listado2(Model model){
+        var productos = productoService.getProductos(false);
+        model.addAttribute("productos",productos);
+        return "/pruebas/listado2";
+    }
+     @PostMapping("/query1")
+    public String query1(
+            @RequestParam("precioInf") double precioInf,
+            @RequestParam("precioSup") double precioSup,
+            Model model){
+        var productos = productoService.consultaJPA(precioInf, precioSup);
+         model.addAttribute("productos",productos);
+         model.addAttribute("precioInf",precioInf);
+         model.addAttribute("precioSup",precioSup);
+        return "/pruebas/listado2";
+    }
+     
+    
 }       

@@ -2,6 +2,7 @@ package com.tienda_k.service;
 
 import com.tienda_k.domain.Producto;
 import java.util.List;
+import org.springframework.data.jpa.repository.Query;
 
 public interface ProductoService {
     
@@ -23,4 +24,18 @@ public interface ProductoService {
     //se crea el registro
     
     public void save (Producto producto);
+    
+    
+    //Consulta JPA 
+    public List<Producto> consultaJPA( double precioInf, double precioSup);
+    
+    
+    
+    //Consulta JPQL
+    public List<Producto> consultaJPQL( double precioInf, double precioSup);
+    
+    
+    
+    //Consulta SQL NATIVA
+    public List<Producto> consultaNativa( double precioInf, double precioSup);
 }
