@@ -8,12 +8,14 @@
         <title>TechShop</title>
     </head>
     <body>
-        <header th:replace="~{layout/plantilla :: header}"/>
+        <header th:replace=" ~{layout/plantilla :: header}"/>
         
+       <section th:replace="~{pruebas/fragmentos :: tabsCategorias}"/>
        
-        <section th:replace="~{producto/fragmentos :: editarProducto}"/>
+     <section th:replace="~{registro/fragmentos :: recordarUsuario}"/>
 
-        <footer th:replace="~{layout/plantilla :: footer}"/>
+
+        <footer th:replace=" ~{layout/plantilla :: footer}"/>
 
     </body>
 </html>

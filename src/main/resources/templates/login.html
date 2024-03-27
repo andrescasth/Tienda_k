@@ -14,7 +14,7 @@
          
          
          <div class="row justify-content-md-center m-5">
-             <div class="col-md-4">
+             <div class="col-md-6">
                  <div class="card">
                      <div class="card-header bg-success text-white">
                          <h2>[[#{login.login}]]</h2><!-- comment -->
@@ -52,9 +52,15 @@
                              </div>
                              
                              <div class="card-footer col text-center">
-                                 <button class="btn btn-success" type="submit">
-                                     <i class="fas fa-sign-in-alt"></i>[[#{login.login}]]
-                                 </button>
+                                   <button class="btn btn-primary" >
+                                        <a th:href="@{/registro/nuevo}" 
+                                           class="btn"><i class="fas fa-user-plus"></i> [[#{accion.registrar}]]</a></button>
+                                    <button class="btn btn-info" >                                        
+                                        <a th:href="@{/registro/recordar}" class="btn"><i class="fas fa-envelope"></i> [[#{accion.recordar}]]</a></button>
+                                    <button class="btn btn-success" type="submit">
+                                        <span class="btn"><i class="fas fa-sign-in-alt"></i>
+                                            [[#{login.login}]]</span></button>
+
                              </div>
                              
                          </form>

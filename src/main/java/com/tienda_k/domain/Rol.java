@@ -22,8 +22,6 @@ public class Rol implements Serializable {
 
     
     
-    @ManyToOne
-    @JoinColumn( name = "id_categoria")
-    private Categoria categoria;
+   
     
 }

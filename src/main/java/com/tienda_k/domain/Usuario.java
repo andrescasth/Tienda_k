@@ -20,15 +20,12 @@ public class Usuario implements Serializable {
     private String password;
     private String nombre;
     private String apellidos;
-    private String correp;
-    private String telefonno;
+    private String correo;
+    private String telefono;
     private String rutaImagen;
     private boolean activo;
     
-    @ManyToOne
-    @JoinColumn( name = "id_categoria")
-    private Categoria categoria;
-    
+   
     
     @OneToMany
     @JoinColumn(name="id_usuario")

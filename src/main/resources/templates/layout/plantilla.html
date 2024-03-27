@@ -82,7 +82,7 @@
                         
                          <ul class="navbar-nav" sec:authorize="isAuthenticated()">
                             <li class="nav-item px-2 text-white">
-                               <img th:src="@{session.rutaImagen}"
+                               <img th:src="@{${session.rutaImagen}}"
                                     alt="img"
                                     height="40"
                                     class="rounded-circle"/>
