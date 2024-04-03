@@ -37,13 +37,12 @@ public class ProjectConfig implements WebMvcConfigurer {
         lci.setParamName("lang");
         return lci;
     }
-    
+
     @Override
     public void addInterceptors(InterceptorRegistry registro) {
         registro.addInterceptor(localeChangeInterceptor());
     }
 
-    
     @Override
     public void addViewControllers(
             ViewControllerRegistry registro) {
@@ -54,56 +53,60 @@ public class ProjectConfig implements WebMvcConfigurer {
     }
 
     //La proxima semana se borra...
-    /*@Bean
-    public UserDetailsService users() {
-        UserDetails admin = User.builder()
-                .username("juan")
-                .password("{noop}123")
-                .roles("USER", "VENDEDOR", "ADMIN")
-                .build();
-        UserDetails vendedor = User.builder()
-                .username("rebeca")
-                .password("{noop}456")
-                .roles("USER", "VENDEDOR")
-                .build();
-        UserDetails usuario = User.builder()
-                .username("pedro")
-                .password("{noop}789")
-                .roles("USER")
-                .build();
-        return new InMemoryUserDetailsManager(usuario, vendedor, admin);
-    }
-*/
+//    @Bean
+//    public UserDetailsService users() {
+//        UserDetails admin = User.builder()
+//                .username("juan")
+//                .password("{noop}123")
+//                .roles("USER", "VENDEDOR", "ADMIN")
+//                .build();
+//        UserDetails vendedor = User.builder()
+//                .username("rebeca")
+//                .password("{noop}456")
+//                .roles("USER", "VENDEDOR")
+//                .build();
+//        UserDetails usuario = User.builder()
+//                .username("pedro")
+//                .password("{noop}789")
+//                .roles("USER")
+//                .build();
+//        return new InMemoryUserDetailsManager(usuario, vendedor, admin);
+//    }
     @Bean
     public SecurityFilterChain
             securityFilterChain(HttpSecurity http)
             throws Exception {
-                http.authorizeHttpRequests((request) -> request
-                        .requestMatchers("/","/index","/js/**","/webjars/**","registro/**","/css/**","/carrito/**")
-                        .permitAll()
-                        .requestMatchers("/categoria/listado",
-                                "/producto/listado")
-                        .hasRole("VENDEDOR")
-                        .requestMatchers("/categoria/nuevo",
-                                "/categoria/modificar/**",
-                                "/categoria/eliminar/**",
-                                "/categoria/guardar",
-                                "/producto/nuevo",
-                                "/producto/modificar/**",
-                                "/producto/eliminar/**",
-                                "/producto/guardar",
-                                "/pruebas/**")
-                        .hasRole("ADMIN")
-                )
-                        .formLogin((form) -> 
-                                form
-                                        .loginPage("/login")
-                                        .permitAll())
-                        .logout((logout) -> logout.permitAll());
+        http.authorizeHttpRequests((request) -> request
+                .requestMatchers("/", "/index",
+                        "/js/**", 
+                        "/webjars/**", 
+                        "/css/**",
+                        "/registro/**",
+                        "/carrito/**")
+                .permitAll()
+                .requestMatchers("/categoria/listado",
+                        "/producto/listado")
+                .hasRole("VENDEDOR")
+                .requestMatchers("/categoria/nuevo",
+                        "/categoria/modificar/**",
+                        "/categoria/eliminar/**",
+                        "/categoria/guardar",
+                        "/producto/nuevo",
+                        "/producto/modificar/**",
+                        "/producto/eliminar/**",
+                        "/producto/guardar",
+                        "/pruebas/**")
+                .hasRole("ADMIN")
+        )
+                .formLogin((form)
+                        -> form
+                        .loginPage("/login")
+                        .permitAll())
+                .logout((logout) -> logout.permitAll());
         return http.build();
     }
-            
-            @Autowired
+
+    @Autowired
     private UserDetailsService userDetailsService;
 
     @Autowired
